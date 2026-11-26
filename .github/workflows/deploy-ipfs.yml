@@ -28,7 +28,7 @@ jobs:
 
       - name: Upload website directory to Storacha / IPFS
         id: upload
-        uses: storacha/add-to-web3@v3.0.0
+        uses: storacha/add-to-web3@v4
         with:
           path_to_add: "site"
           secret_key: ${{ secrets.STORACHA_PRINCIPAL }}
