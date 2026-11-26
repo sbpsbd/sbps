@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sbpsbd.github.io/sbps/sitemap.xml
