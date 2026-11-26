@@ -1,0 +1,49 @@
+name: Publish SBPS website to IPFS
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "site/**"
+      - ".github/workflows/deploy-ipfs.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Upload static website to IPFS via Storacha
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate website files
+        run: |
+          test -s site/index.html
+          test -s site/styles.css
+          test -s site/app.js
+
+      - name: Upload website directory to Storacha / IPFS
+        id: upload
+        uses: storacha/add-to-web3@v4
+        with:
+          path_to_add: "site"
+          secret_key: ${{ secrets.STORACHA_PRINCIPAL }}
+          proof: ${{ secrets.STORACHA_PROOF }}
+
+      - name: Show published CID
+        env:
+          IPFS_CID: ${{ steps.upload.outputs.cid }}
+          IPFS_URL: ${{ steps.upload.outputs.url }}
+        run: |
+          echo "SBPS website IPFS CID: $IPFS_CID"
+          echo "Public gateway URL: $IPFS_URL"
+          {
+            echo "## SBPS IPFS publication"
+            echo ""
+            echo "- **CID:** `$IPFS_CID`"
+            echo "- **Gateway:** $IPFS_URL"
+          } >> "$GITHUB_STEP_SUMMARY"

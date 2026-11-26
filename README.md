@@ -80,3 +80,23 @@ Newargachha, Ullapara, Sirajganj, Bangladesh
 *Empowering People. Transforming Lives. Building a Better Future.*
 
 © South Bangla Polli Sangstha.
+
+## Website
+
+The bilingual static website is maintained in the `site/` directory.
+
+- `site/index.html` — website structure and English/Bangla content
+- `site/styles.css` — responsive visual design
+- `site/app.js` — language switcher, IPFS CID lookup and local SHA-256 utility
+- `.github/workflows/deploy-ipfs.yml` — GitHub Actions workflow for publishing the `site/` directory to IPFS through Storacha
+
+### Publish to IPFS
+
+1. Create and verify a Storacha account, create a Space, and install the Storacha CLI on a trusted computer.
+2. Generate a dedicated CI key with `storacha key create --json`.
+3. Create a least-privilege delegation for that key with the capabilities `space/blob/add`, `space/index/add`, `filecoin/offer`, and `upload/add` using `storacha delegation create <DID> -c space/blob/add -c space/index/add -c filecoin/offer -c upload/add --base64`.
+4. In GitHub, open **Settings → Secrets and variables → Actions → New repository secret**. Save the generated key as `STORACHA_PRINCIPAL` and the delegation output as `STORACHA_PROOF`. Never commit either value to this repository.
+5. Merge the website changes into `main`. The workflow uploads `site/` on subsequent website changes. It can also be started manually from **Actions → Publish SBPS website to IPFS → Run workflow**.
+6. Copy the resulting CID and gateway URL from the workflow summary. Keep a copy of each release CID in the organization's publication records.
+
+The Storacha account, Space, and storage allowance are subject to the provider's current terms and quotas. A public IPFS CID is not access control: only publish approved public information. A CID identifies content; it does not independently certify the truth, approval, or legal validity of a document. The website's SHA-256 utility calculates a local file fingerprint only; it does not upload the file or create an on-chain record.
