@@ -4,7 +4,7 @@
 
 **South Bangla Polli Sangstha (SBPS)** is a non-governmental microfinance and rural development organization based in Ullapara, Sirajganj, Bangladesh.
 
-Established on **1 January 2013**, SBPS works to improve the socioeconomic conditions of underserved communities through inclusive financial services, savings mobilization, income-generating opportunities, and community-focused development.
+Established in **2015**, SBPS works to improve the socioeconomic conditions of underserved communities through inclusive financial services, savings mobilization, income-generating opportunities, and community-focused development.
 
 ## Organization Profile
 
@@ -12,7 +12,7 @@ Established on **1 January 2013**, SBPS works to improve the socioeconomic condi
 |---|---|
 | Organization name | South Bangla Polli Sangstha |
 | Abbreviation | SBPS |
-| Established | 1 January 2013 |
+| Established | 2015 (as stated in the FY 2025–2026 audited report) |
 | Head office | Newargachha, Ullapara, Sirajganj, Bangladesh |
 | Department of Social Services registration | Siraj-1021/2015 |
 | Microcredit Regulatory Authority certificate | 32021-00057-00895 |
